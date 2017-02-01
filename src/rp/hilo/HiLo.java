@@ -141,6 +141,23 @@ public class HiLo extends Application {
         hiBtn.setDisable(true);
         loBtn.setDisable(true);
         showCard(1, card2);
+        if (isHigher(card2, card1) == betHigh) {
+            // won bet
+        } else {
+            // lost bet
+        }
+    }
+
+    private boolean isHigher(int a, int b) {
+        int aVal = Math.floorMod(a, 13);
+        int bVal = Math.floorMod(b, 13);
+        if (aVal > bVal) return true;
+        if (aVal < bVal) return false;
+        int aSuit = Math.floorDiv(a, 13);
+        int bSuit = Math.floorDiv(b, 13);
+        if (aSuit > bSuit) return true;
+        if (aSuit < bSuit) return false;
+        throw new RuntimeException("Someone has been cheating!");
     }
 
 }
